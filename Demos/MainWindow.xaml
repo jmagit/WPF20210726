@@ -5,9 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Demos"
         mc:Ignorable="d"
-        Title="Demos del curso" Height="450" Width="800">
-    <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="154,87,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnOtro" Content="otro" Width="100" Height="50" Click="Button_Click" />
-    </Grid>
+        Title="Demos del curso" Height="393.75" Width="803.75">
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Height="53" VerticalAlignment="Top" Orientation="Horizontal" Margin="2, 1, 2, 1" >
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFAAA8A8" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            <Button Content="Button" Width="75" Click="Button_Click_1"/>
+            <Button Content="Button" Width="75" Click="Button_Click_2"/>
+            <Button Content="Button" Width="75" Click="Button_Click_3"/>
+            <Button Content="Button" Width="75" />
+            <Button Content="Button" Width="75" />
+        </StackPanel>
+        <ContentControl x:Name="host" ></ContentControl>
+    </DockPanel>
 </Window>

@@ -20,11 +20,31 @@ namespace Demos {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
-            btnOtro.Content = "Por código";
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) {
 
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e) {
+            if(host.Content is IDisposable) {
+                (host.Content as IDisposable).Dispose();
+            }
+            host.Content = new ucConfigura();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e) {
+            if (host.Content is IDisposable) {
+                (host.Content as IDisposable).Dispose();
+            }
+            host.Content = new ucOtro();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e) {
+            if (host.Content is IDisposable) {
+                (host.Content as IDisposable).Dispose();
+            }
+            host.Content = null;
         }
     }
 }
