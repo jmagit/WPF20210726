@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Demos.ViewModel;
+using Demos.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -45,6 +47,17 @@ namespace Demos {
                 (host.Content as IDisposable).Dispose();
             }
             host.Content = null;
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e) {
+            if (host.Content is IDisposable) {
+                (host.Content as IDisposable).Dispose();
+            }
+            var cntr = new ucTrabajosLst();
+            var vm = new TrabajoViewModel();
+            cntr.DataContext = vm;
+            host.Content = cntr;
+            vm.Carga();
         }
     }
 }

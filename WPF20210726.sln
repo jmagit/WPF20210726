@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demos.Domains.Core", "Demos
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demos.Domains.Entidades", "Demos.Domains.Entidades\Demos.Domains.Entidades.csproj", "{276E7315-8BDC-4F59-9A3A-440AA45D7D97}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demos.Infraestructure.Data", "Demos.Infraestructure.Data\Demos.Infraestructure.Data.csproj", "{4949DB5F-3ABA-4F2B-A344-B18B75A07FFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demos.Domains.Contracts", "Demos.Domains.Contracts\Demos.Domains.Contracts.csproj", "{2DB0AFFA-5A12-4E45-B2CF-6D790E2D58EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{276E7315-8BDC-4F59-9A3A-440AA45D7D97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{276E7315-8BDC-4F59-9A3A-440AA45D7D97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{276E7315-8BDC-4F59-9A3A-440AA45D7D97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4949DB5F-3ABA-4F2B-A344-B18B75A07FFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4949DB5F-3ABA-4F2B-A344-B18B75A07FFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4949DB5F-3ABA-4F2B-A344-B18B75A07FFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4949DB5F-3ABA-4F2B-A344-B18B75A07FFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DB0AFFA-5A12-4E45-B2CF-6D790E2D58EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DB0AFFA-5A12-4E45-B2CF-6D790E2D58EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DB0AFFA-5A12-4E45-B2CF-6D790E2D58EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DB0AFFA-5A12-4E45-B2CF-6D790E2D58EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
