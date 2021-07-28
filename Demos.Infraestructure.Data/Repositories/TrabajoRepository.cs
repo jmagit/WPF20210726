@@ -11,8 +11,8 @@ using System.Threading.Tasks;
 
 namespace Demos.Infraestructure.Data.Repositories {
     public class TrabajoRepository : ITrabajoRepository {
-        public List<Trabajo> CargarDS() {
-            var filePath = @"D:\Cursos\dotnet\WPF20210726\Curso.xlsx";
+        public List<Trabajo> CargarDS(string filePath) {
+            //var filePath = @"D:\Cursos\dotnet\WPF20210726\Curso.xlsx";
             var lstTrabajos = new List<Trabajo>();
             using (var stream = File.Open(filePath, FileMode.Open, FileAccess.Read)) {
                 using (var reader = ExcelReaderFactory.CreateReader(stream)) {
@@ -40,8 +40,8 @@ namespace Demos.Infraestructure.Data.Repositories {
             return lstTrabajos;
         }
 
-        public List<Trabajo> Cargar() {
-            var filePath = @"D:\Cursos\dotnet\WPF20210726\Curso.xlsx";
+        public List<Trabajo> Cargar(string filePath) {
+            //var filePath = @"D:\Cursos\dotnet\WPF20210726\Curso.xlsx";
             var lstTrabajos = new List<Trabajo>();
             using (var stream = File.Open(filePath, FileMode.Open, FileAccess.Read)) {
                 using (var reader = ExcelReaderFactory.CreateReader(stream)) {

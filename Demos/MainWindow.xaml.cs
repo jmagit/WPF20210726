@@ -49,15 +49,27 @@ namespace Demos {
             host.Content = null;
         }
 
+        TrabajoViewModel vmTrabajo = new TrabajoViewModel();
         private void Button_Click_4(object sender, RoutedEventArgs e) {
             if (host.Content is IDisposable) {
                 (host.Content as IDisposable).Dispose();
             }
             var cntr = new ucTrabajosLst();
-            var vm = new TrabajoViewModel();
-            cntr.DataContext = vm;
+            // var vm = new TrabajoViewModel();
+            cntr.DataContext = vmTrabajo;
             host.Content = cntr;
-            vm.Carga();
+            //vm.Carga();
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e) {
+            if (host.Content is IDisposable) {
+                (host.Content as IDisposable).Dispose();
+            }
+            var cntr = new ucTrabajosForm();
+            // var vm = new TrabajoViewModel();
+            cntr.DataContext = vmTrabajo;
+            host.Content = cntr;
+
         }
     }
 }

@@ -55,6 +55,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\VisibilityConverters.cs" />
+    <Compile Include="Converters\StringToNullConverter.cs" />
     <Compile Include="ucConfigura.xaml.cs">
       <DependentUpon>ucConfigura.xaml</DependentUpon>
     </Compile>
@@ -62,6 +64,9 @@
       <DependentUpon>ucOtro.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\TrabajoViewModel.cs" />
+    <Compile Include="Views\ucTrabajosForm.xaml.cs">
+      <DependentUpon>ucTrabajosForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ucTrabajosLst.xaml.cs">
       <DependentUpon>ucTrabajosLst.xaml</DependentUpon>
     </Compile>
@@ -91,6 +96,10 @@
     <Page Include="ucOtro.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ucTrabajosForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\ucTrabajosLst.xaml">
       <SubType>Designer</SubType>
@@ -139,6 +148,10 @@
     <ProjectReference Include="..\Demos.Infraestructure.Data\Demos.Infraestructure.Data.csproj">
       <Project>{4949db5f-3aba-4f2b-a344-b18b75a07ffe}</Project>
       <Name>Demos.Infraestructure.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Demos.Presentation.Core\Demos.Presentation.Core.csproj">
+      <Project>{3cde048c-668e-4d77-bdee-300ba543ff24}</Project>
+      <Name>Demos.Presentation.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

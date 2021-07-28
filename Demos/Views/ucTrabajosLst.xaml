@@ -3,26 +3,56 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+             xmlns:dat="clr-namespace:System.Windows.Data;assembly=PresentationFramework"
              xmlns:local="clr-namespace:Demos.Views"
              xmlns:vm="clr-namespace:Demos.ViewModel"
+             xmlns:cnv="clr-namespace:Demos.Converters"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=vm:TrabajoViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <vm:TrabajoViewModel x:Key="MyVM" />
+        <cnv:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <cnv:BooleanToInvisibilityConverter x:Key="BooleanToInvisibilityConverter" />
+        <cnv:StringToNullConverter x:Key="StringToNullConverter" />
+        <cnv:ZeroToInvisibilityConverter x:Key="ZeroToInvisibilityConverter" />
+    </UserControl.Resources>
     <Grid>
+        <Grid.Resources>
+            <CollectionViewSource Source="{Binding Listado}" x:Key="lstOrdenado">
+                <CollectionViewSource.SortDescriptions>
+                    <scm:SortDescription PropertyName="Identificador"/>
+                </CollectionViewSource.SortDescriptions>
+                <CollectionViewSource.GroupDescriptions>
+                    <dat:PropertyGroupDescription PropertyName="Origen"/>
+                </CollectionViewSource.GroupDescriptions>
+            </CollectionViewSource>
+
+        </Grid.Resources>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="60*"/>
             <ColumnDefinition Width="40*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid ItemsSource="{Binding Listado}" SelectedItem="{Binding Elemento, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-        <StackPanel Grid.Column="1" DataContext="{Binding Elemento, Mode=OneWay}" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <DataGrid x:Name="dgListado" ItemsSource="{Binding Mode=OneWay, Source={StaticResource lstOrdenado}}" SelectedItem="{Binding Elemento, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding Listado.Count, Converter={StaticResource ZeroToInvisibilityConverter}, Mode=OneWay}" />
+        <StackPanel Grid.Column="1" DataContext="{Binding Elemento, Mode=OneWay}" IsEnabled="{Binding Parent.DataContext.VerDetalle, RelativeSource={RelativeSource Self}}" Visibility="{Binding Parent.DataContext.VerDetalle, Converter={StaticResource BooleanToVisibilityConverter}, RelativeSource={RelativeSource Self}}" >
             <Label Content="Identificador" />
-            <TextBox Text="{Binding Identificador}" />
+            <TextBox Text="{Binding Identificador, Converter={StaticResource StringToNullConverter}}" />
             <Label Content="Origen" />
             <TextBox Text="{Binding Origen}" />
             <Label Content="Peso" />
             <TextBox Text="{Binding Peso}" />
             <Label Content="Fecha Carga" />
             <DatePicker Text="{Binding FechaCarga}" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="2">
+            <Button x:Name="btnCargar" Content="Cargar" Command="{Binding CargarCmd, Mode=OneWay}" />
+            <Button Content="Limpiar" Command="{Binding LimpiaCmd, Mode=OneWay}" CommandParameter="{Binding Command, ElementName=btnCargar}" />
+            <Button Content="Ver" Command="{Binding VerCmd, Mode=OneWay}" />
         </StackPanel>
     </Grid>
 </UserControl>

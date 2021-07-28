@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demos.Infraestructure.Data"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demos.Domains.Contracts", "Demos.Domains.Contracts\Demos.Domains.Contracts.csproj", "{2DB0AFFA-5A12-4E45-B2CF-6D790E2D58EE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demos.Presentation.Core", "Demos.Presentation.Core\Demos.Presentation.Core.csproj", "{3CDE048C-668E-4D77-BDEE-300BA543FF24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demos.Domains.Entidades.Tests", "Demos.Domains.Entidades.Tests\Demos.Domains.Entidades.Tests.csproj", "{A0C0AE62-825C-4853-990A-38FE68ACF1CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{2DB0AFFA-5A12-4E45-B2CF-6D790E2D58EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DB0AFFA-5A12-4E45-B2CF-6D790E2D58EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DB0AFFA-5A12-4E45-B2CF-6D790E2D58EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CDE048C-668E-4D77-BDEE-300BA543FF24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CDE048C-668E-4D77-BDEE-300BA543FF24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CDE048C-668E-4D77-BDEE-300BA543FF24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CDE048C-668E-4D77-BDEE-300BA543FF24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0C0AE62-825C-4853-990A-38FE68ACF1CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0C0AE62-825C-4853-990A-38FE68ACF1CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0C0AE62-825C-4853-990A-38FE68ACF1CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0C0AE62-825C-4853-990A-38FE68ACF1CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

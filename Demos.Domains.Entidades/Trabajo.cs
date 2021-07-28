@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Demos.Domains.Entidades {
     public class Trabajo: ObservableBase {
-        private String origen;
+        private Origen origen;
         private String identificador;
         private Double peso;
         private DateTime fechaCarga;
@@ -15,20 +15,28 @@ namespace Demos.Domains.Entidades {
         public Trabajo() {
         }
 
-        public Trabajo(string origen, string identificador, double peso, DateTime fechaCarga) {
-            this.origen = origen;
+        public Trabajo(string identificador, double peso, DateTime fechaCarga) {
+            this.identificador = identificador;
+            this.peso = peso;
+            this.fechaCarga = fechaCarga;
+        }
+        public Trabajo(string idOrigen, string identificador, double peso, DateTime fechaCarga) {
+            this.origen = new Origen(idOrigen);
             this.identificador = identificador;
             this.peso = peso;
             this.fechaCarga = fechaCarga;
         }
 
-        public string Origen {
+        public Origen Origen {
             get => origen;
             set {
                 if (origen == value) return;
                 origen = value;
                 RaisePropertyChanged(nameof(Origen));
             }
+        }
+        public String IdOrigen {
+            get => origen?.IdOrigen;
         }
         public string Identificador {
             get => identificador;

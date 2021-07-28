@@ -9,13 +9,19 @@ using System.ComponentModel;
 using Demos.Domains.Entidades;
 using Demos.Domains.Contracts.Repositories;
 using Demos.Infraestructure.Data.Repositories;
+using System.Windows.Input;
 
 namespace Demos.ViewModel {
     public class TrabajoViewModel: ObservableBase {
         private ITrabajoRepository dao = new TrabajoRepository();
         private ObservableCollection<Trabajo> listado;
         private Trabajo elemento;
+        private DelegateCommand cargarCmd;
+        private bool verDetalle = true;
 
+        public TrabajoViewModel() {
+            cargarCmd = new DelegateCommand((cmd) => Carga(), (cmd) => listado == null);
+        }
         public ObservableCollection<Trabajo> Listado {
             get => listado;
             protected set {
@@ -34,9 +40,36 @@ namespace Demos.ViewModel {
         }
 
         public void Carga() {
-            Listado = new ObservableCollection<Trabajo>(dao.Cargar());
+            Listado = new ObservableCollection<Trabajo>(dao.Cargar(@"D:\Cursos\dotnet\WPF20210726\Curso.xlsx"));
             if(listado != null && listado.Count > 0) {
                 Elemento = Listado[0];
+            }
+            cargarCmd.RaiseCanExecuteChanged();
+        }
+
+
+        public DelegateCommand CargarCmd {
+            get {
+                return cargarCmd;
+            }
+        }
+        public DelegateCommand LimpiaCmd {
+            get {
+                return new DelegateCommand(cmd => { 
+                    Listado = null; 
+                    if(cmd is DelegateCommand)
+                        (cmd as DelegateCommand).RaiseCanExecuteChanged(); 
+                });
+            }
+        }
+
+        public bool VerDetalle { get => verDetalle; }
+        public DelegateCommand VerCmd {
+            get {
+                return new DelegateCommand(cmd => {
+                    verDetalle = !verDetalle;
+                    RaisePropertyChanged(nameof(VerDetalle));
+                });
             }
         }
     }
