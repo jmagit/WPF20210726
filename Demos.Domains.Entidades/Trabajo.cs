@@ -31,8 +31,14 @@ namespace Demos.Domains.Entidades {
             get => origen;
             set {
                 if (origen == value) return;
+                var anterior = origen;
                 origen = value;
+                if (origen != null && !origen.Trabajos.Contains(this))
+                    origen.Trabajos.Add(this);
+                if (anterior != null && anterior.Trabajos.Contains(this))
+                    anterior.Trabajos.Remove(this);
                 RaisePropertyChanged(nameof(Origen));
+                RaisePropertyChanged(nameof(IdOrigen));
             }
         }
         public String IdOrigen {

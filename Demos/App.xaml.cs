@@ -11,5 +11,10 @@ namespace Demos {
     /// Lógica de interacción para App.xaml
     /// </summary>
     public partial class App : Application {
+        public static bool IsInDesignMode {
+            get {
+                return System.ComponentModel.DesignerProperties.GetIsInDesignMode(new DependencyObject());
+            }
+        }
     }
 }

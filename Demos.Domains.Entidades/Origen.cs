@@ -20,8 +20,7 @@ namespace Demos.Domains.Entidades {
             this.idOrigen = idOrigen;
         }
 
-        public Origen(string idOrigen, string nombre): this() {
-            this.idOrigen = idOrigen;
+        public Origen(string idOrigen, string nombre): this(idOrigen) {
             this.nombre = nombre;
         }
 
@@ -44,7 +43,7 @@ namespace Demos.Domains.Entidades {
         public ObservableCollection<Trabajo> Trabajos {
             get => trabajos;
             set {
-                if (trabajos == value) return;
+                if (trabajos == value || value == null) return;
                 trabajos = value;
                 trabajos.CollectionChanged += (s, ev) => {
                     if (ev.NewItems != null)
@@ -55,10 +54,14 @@ namespace Demos.Domains.Entidades {
                         foreach (Trabajo item in ev.OldItems)
                             if (item.Origen == this)
                                 item.Origen = null;
+                    RaisePropertyChanged(nameof(Count));
                 };
                 RaisePropertyChanged(nameof(Trabajos));
             }
         }
+
+        public int Count => trabajos.Count;
+
         public override bool Equals(object obj) {
             return obj is Origen source &&
                    idOrigen == source.idOrigen;
