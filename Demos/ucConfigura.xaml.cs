@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,6 +21,16 @@ namespace Demos {
     public partial class ucConfigura : UserControl {
         public ucConfigura() {
             InitializeComponent();
+            Task.Run(() => {
+                while (true) {
+                    var t = DateTime.Now.ToString();
+                    //Console.WriteLine(DateTime.Now.ToString());
+                    Dispatcher.Invoke(() => {
+                        txtOrigen.Text = t;
+                    });
+                    Thread.Sleep(500);
+                }
+            });
         }
     }
 }

@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="80,47,0,0" TextWrapping="Wrap" Text="Config" VerticalAlignment="Top" FontSize="72"/>
+        <TextBlock x:Name="txtOrigen" HorizontalAlignment="Left" Margin="80,47,0,0" TextWrapping="Wrap" Text="Config" VerticalAlignment="Top" FontSize="72"/>
 
     </Grid>
 </UserControl>

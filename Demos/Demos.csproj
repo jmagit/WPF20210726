@@ -63,7 +63,11 @@
     <Compile Include="ucOtro.xaml.cs">
       <DependentUpon>ucOtro.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\OrigenViewModel.cs" />
     <Compile Include="ViewModel\TrabajoViewModel.cs" />
+    <Compile Include="Views\ucOrigen.xaml.cs">
+      <DependentUpon>ucOrigen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ucTrabajosForm.xaml.cs">
       <DependentUpon>ucTrabajosForm.xaml</DependentUpon>
     </Compile>
@@ -94,6 +98,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ucOtro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ucOrigen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

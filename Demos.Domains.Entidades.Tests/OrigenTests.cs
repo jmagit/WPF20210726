@@ -71,5 +71,13 @@ namespace Demos.Domains.Entidades.Tests {
             Assert.AreEqual(t, destino.Trabajos[0]);
             Assert.AreEqual(destino, t.Origen);
         }
+        [TestMethod()]
+        public void CalculaTotalTest() {
+            var origen = new Origen("PR", "Paris");
+            var t = new Trabajo("1", 2, DateTime.Now);
+            origen.Trabajos.Add(t);
+            origen.Trabajos.Add(new Trabajo("2", 22, DateTime.Now));
+            Assert.AreEqual(24, origen.Total);
+        }
     }
 }

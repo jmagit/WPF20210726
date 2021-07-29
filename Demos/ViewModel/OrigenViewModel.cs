@@ -13,25 +13,17 @@ using System.Windows.Input;
 using System.Threading;
 
 namespace Demos.ViewModel {
-    public class TrabajoViewModel: ObservableBase {
-        private ITrabajoRepository dao = new TrabajoRepository();
-        private ObservableCollection<Trabajo> listado;
-        private Trabajo elemento;
+    public class OrigenViewModel : ObservableBase {
+        private IOrigenRepository dao = new OrigenRepository();
+        private ObservableCollection<Origen> listado;
+        private Origen elemento;
         private DelegateCommand cargarCmd;
         private bool verDetalle = true;
 
-        public TrabajoViewModel() {
+        public OrigenViewModel() {
             cargarCmd = new DelegateCommand((cmd) => Carga(), (cmd) => listado == null);
-            Task.Run(() => {
-                while (true) {
-                    if(elemento != null) {
-                        elemento.Peso++;
-                    }
-                    Thread.Sleep(500);
-                }
-            });
         }
-        public ObservableCollection<Trabajo> Listado {
+        public ObservableCollection<Origen> Listado {
             get => listado;
             protected set {
                 if (listado == value) return;
@@ -39,7 +31,7 @@ namespace Demos.ViewModel {
                 RaisePropertyChanged(nameof(Listado));
             }
         }
-        public Trabajo Elemento {
+        public Origen Elemento {
             get => elemento;
             set {
                 if (elemento == value) return;
@@ -48,12 +40,24 @@ namespace Demos.ViewModel {
             }
         }
 
-        public void Carga() {
-            Listado = new ObservableCollection<Trabajo>(dao.Cargar(@"D:\Cursos\dotnet\WPF20210726\Curso.xlsx"));
+        public async void Carga() {
+            Listado = new ObservableCollection<Origen>(await dao.CargarAsync(@"D:\Cursos\dotnet\WPF20210726\Curso.xlsx"));
             if(listado != null && listado.Count > 0) {
                 Elemento = Listado[0];
             }
             cargarCmd.RaiseCanExecuteChanged();
+            //Parallel.Invoke(
+            //    () => {
+            //        Listado = new ObservableCollection<Origen>(dao.Cargar(@"D:\Cursos\dotnet\WPF20210726\Curso.xlsx"));
+            //    },
+            //    () => {
+            //        Elemento = null;
+            //    }
+            //    );
+            //Parallel.ForEach(listado, (item) => {
+            //    foreach (var t in item.Trabajos)
+            //        Console.WriteLine(t.Identificador);
+            //});
         }
 
 

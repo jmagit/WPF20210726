@@ -49,12 +49,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\OrigenRepository.cs" />
     <Compile Include="Repositories\TrabajoRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Demos.Domains.Contracts\Demos.Domains.Contracts.csproj">
       <Project>{2db0affa-5a12-4e45-b2cf-6d790e2d58ee}</Project>
       <Name>Demos.Domains.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Demos.Domains.Core\Demos.Domains.Core.csproj">
+      <Project>{9cc86569-66fb-416b-9ec4-e6fc34e871e2}</Project>
+      <Name>Demos.Domains.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Demos.Domains.Entidades\Demos.Domains.Entidades.csproj">
       <Project>{276e7315-8bdc-4f59-9a3a-440aa45d7d97}</Project>

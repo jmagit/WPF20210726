@@ -47,20 +47,31 @@ namespace Demos.Domains.Entidades {
                 trabajos = value;
                 trabajos.CollectionChanged += (s, ev) => {
                     if (ev.NewItems != null)
-                        foreach (Trabajo item in ev.NewItems)
-                            if(item.Origen != this)
+                        foreach (Trabajo item in ev.NewItems) {
+                            if (item.Origen != this)
                                 item.Origen = this;
+                            item.PropertyChanged += Trabajo_PropertyChanged;
+                        }
                     if (ev.OldItems != null)
-                        foreach (Trabajo item in ev.OldItems)
+                        foreach (Trabajo item in ev.OldItems) {
                             if (item.Origen == this)
                                 item.Origen = null;
+                            item.PropertyChanged -= Trabajo_PropertyChanged;
+                        }
                     RaisePropertyChanged(nameof(Count));
+                    RaisePropertyChanged(nameof(Total));
                 };
                 RaisePropertyChanged(nameof(Trabajos));
             }
         }
 
+        private void Trabajo_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e) {
+            if(e.PropertyName == "Peso")
+                RaisePropertyChanged(nameof(Total));;
+        }
+
         public int Count => trabajos.Count;
+        public double Total => trabajos.Sum(item => item.Peso);
 
         public override bool Equals(object obj) {
             return obj is Origen source &&

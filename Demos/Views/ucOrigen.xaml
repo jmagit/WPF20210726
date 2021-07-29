@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="Demos.Views.ucOrigen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Demos.Views"
+             xmlns:vm="clr-namespace:Demos.ViewModel"
+             xmlns:cnv="clr-namespace:Demos.Converters"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance Type=vm:OrigenViewModel}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
+            <Button x:Name="btnCargar" Content="Cargar" Command="{Binding CargarCmd, Mode=OneWay}" />
+            <Button Content="Limpiar" Command="{Binding LimpiaCmd, Mode=OneWay}" CommandParameter="{Binding Command, ElementName=btnCargar}" />
+            <Button Content="Ver" Command="{Binding VerCmd, Mode=OneWay}" />
+        </StackPanel>
+        <DataGrid x:Name="dgOrigenes" Grid.Row="1" ItemsSource="{Binding Listado}" SelectedItem="{Binding Elemento}" />
+        <DataGrid x:Name="dgTrabajos" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Elemento.Trabajos}" />
+        <StackPanel Grid.Row="2" DataContext="{Binding Elemento}" >
+            <Label Content="IdOrigen" />
+            <TextBox Text="{Binding IdOrigen}" />
+            <Label Content="Origen" />
+            <TextBox Text="{Binding Nombre}" />
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="1" DataContext="{Binding SelectedItem, ElementName=dgTrabajos}"  >
+            <Label Content="Identificador" />
+            <TextBox Text="{Binding Identificador}" />
+            <Label Content="Origen" />
+            <ComboBox ItemsSource="{Binding ItemsSource, ElementName=dgOrigenes}" SelectedItem="{Binding Origen}" DisplayMemberPath="Nombre" />
+            <Label Content="Peso" />
+            <TextBox Text="{Binding Peso}" />
+            <Label Content="Fecha Carga" />
+            <DatePicker Text="{Binding FechaCarga}" />
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -19,6 +19,7 @@
             <Button Content="Button" Width="75" Click="Button_Click_3"/>
             <Button Content="Trabajos" Width="75" Click="Button_Click_4" />
             <Button Content="Form" Width="75" Click="Button_Click_5" />
+            <Button Content="Origenes" Width="75" Click="Button_Click_6" />
         </StackPanel>
         <ContentControl x:Name="host" ></ContentControl>
     </DockPanel>

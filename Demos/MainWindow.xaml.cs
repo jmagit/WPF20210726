@@ -71,5 +71,14 @@ namespace Demos {
             host.Content = cntr;
 
         }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e) {
+            if (host.Content is IDisposable) {
+                (host.Content as IDisposable).Dispose();
+            }
+            var cntr = new ucOrigen();
+            cntr.DataContext = new OrigenViewModel();
+            host.Content = cntr;
+        }
     }
 }
