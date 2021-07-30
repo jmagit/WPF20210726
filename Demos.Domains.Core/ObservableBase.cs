@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Demos.Domains.Core
 {
-    public class ObservableBase : INotifyPropertyChanged {
+    public abstract class ObservableBase : INotifyPropertyChanged {
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged(PropertyChangedEventArgs ev) {

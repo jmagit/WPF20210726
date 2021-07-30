@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entidad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Origen.cs" />
     <Compile Include="Trabajo.cs" />

@@ -44,14 +44,14 @@ namespace Demos.Domains.Core
         protected virtual void RaiseValidationProperty(string propertyName) {
             var rslt = ValidateProperty(propertyName);
             if (errorsContainer.ContainsKey(propertyName)) {
-                if (rslt.Count == 0) {
+                if (rslt == null || rslt.Count == 0) {
                     errorsContainer.Remove(propertyName);
                     OnErrorsChanged(propertyName);
                 } else {
                     errorsContainer[propertyName] = rslt;
                     OnErrorsChanged(propertyName);
                 }
-            } else if (rslt.Count > 0) {
+            } else if (rslt != null && rslt.Count > 0) {
                 errorsContainer.Add(propertyName, rslt);
                 OnErrorsChanged(propertyName);
             }

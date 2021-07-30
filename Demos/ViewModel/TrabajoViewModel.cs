@@ -22,7 +22,7 @@ namespace Demos.ViewModel {
 
         public TrabajoViewModel() {
             cargarCmd = new DelegateCommand((cmd) => Carga(), (cmd) => listado == null);
-            Task.Run(() => {
+            var t = Task.Run(() => {
                 while (true) {
                     if(elemento != null) {
                         elemento.Peso++;
@@ -30,6 +30,7 @@ namespace Demos.ViewModel {
                     Thread.Sleep(500);
                 }
             });
+            // t.Wait();
         }
         public ObservableCollection<Trabajo> Listado {
             get => listado;
