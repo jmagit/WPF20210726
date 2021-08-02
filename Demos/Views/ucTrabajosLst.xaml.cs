@@ -21,5 +21,19 @@ namespace Demos.Views {
         public ucTrabajosLst() {
             InitializeComponent();
         }
+
+
+        // Using a DependencyProperty as the backing store for Titulo.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TituloProperty =
+            DependencyProperty.Register("Titulo", typeof(string), typeof(ucTrabajosLst),
+                new PropertyMetadata("Sin titulo"));
+
+
+        public string Titulo {
+            get { return (string)GetValue(TituloProperty); }
+            set { SetValue(TituloProperty, value); }
+        }
+
+        // public string Titulo { get; set; }
     }
 }

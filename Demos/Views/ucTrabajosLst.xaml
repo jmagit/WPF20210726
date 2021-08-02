@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Demos.Views.ucTrabajosLst"
+﻿<UserControl x:Name="userControl" x:Class="Demos.Views.ucTrabajosLst"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -53,6 +53,8 @@
             <Button x:Name="btnCargar" Content="Cargar" Command="{Binding CargarCmd, Mode=OneWay}" />
             <Button Content="Limpiar" Command="{Binding LimpiaCmd, Mode=OneWay}" CommandParameter="{Binding Command, ElementName=btnCargar}" />
             <Button Content="Ver" Command="{Binding VerCmd, Mode=OneWay}" />
+            <Button Content="Cerrar" Command="{Binding CerrarCmd, Mode=OneWay}" />
+            <TextBlock Text="{Binding ElementName=userControl, Path=Titulo, Mode=OneWay}" IsManipulationEnabled="True" />
         </StackPanel>
     </Grid>
 </UserControl>

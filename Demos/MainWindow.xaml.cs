@@ -2,6 +2,7 @@
 using Demos.Views;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,6 +48,15 @@ namespace Demos {
 
         TrabajoViewModel vmTrabajo = new TrabajoViewModel();
         private void TrabajosLst_Click(object sender, RoutedEventArgs e) {
+
+            EventHandler<CancelEventArgs> cerrar = null;
+            cerrar = (object s, CancelEventArgs ev) => {
+                host.Content = null;
+                vmTrabajo.Cerrar -= cerrar;
+
+            };
+            vmTrabajo.Cerrar += cerrar;
+
             if (host.Content is IDisposable) {
                 (host.Content as IDisposable).Dispose();
             }

@@ -82,5 +82,25 @@ namespace Demos.ViewModel {
                 });
             }
         }
+
+        public event EventHandler<CancelEventArgs> Cerrar;
+
+        protected void onCerrar(CancelEventArgs ev) {
+            Cerrar?.Invoke(this, ev);
+        }
+
+        public DelegateCommand CerrarCmd {
+            get {
+                return new DelegateCommand(cmd => {
+                    var ev = new CancelEventArgs();
+                    ev.Cancel = false;
+                    onCerrar(ev);
+                    if(ev.Cancel) {
+                        //...
+                    }
+                });
+            }
+        }
+
     }
 }
