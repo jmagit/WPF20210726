@@ -24,25 +24,21 @@ namespace Demos {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e) {
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e) {
-            if(host.Content is IDisposable) {
+        private void btnConfigura_Click(object sender, RoutedEventArgs e) {
+            if (host.Content is IDisposable) {
                 (host.Content as IDisposable).Dispose();
             }
             host.Content = new ucConfigura();
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e) {
+        private void Otro_Click(object sender, RoutedEventArgs e) {
             if (host.Content is IDisposable) {
                 (host.Content as IDisposable).Dispose();
             }
             host.Content = new ucOtro();
         }
 
-        private void Button_Click_3(object sender, RoutedEventArgs e) {
+        private void Limpia_Click(object sender, RoutedEventArgs e) {
             if (host.Content is IDisposable) {
                 (host.Content as IDisposable).Dispose();
             }
@@ -50,7 +46,7 @@ namespace Demos {
         }
 
         TrabajoViewModel vmTrabajo = new TrabajoViewModel();
-        private void Button_Click_4(object sender, RoutedEventArgs e) {
+        private void TrabajosLst_Click(object sender, RoutedEventArgs e) {
             if (host.Content is IDisposable) {
                 (host.Content as IDisposable).Dispose();
             }
@@ -61,7 +57,7 @@ namespace Demos {
             //vm.Carga();
         }
 
-        private void Button_Click_5(object sender, RoutedEventArgs e) {
+        private void TrabajosForm_Click(object sender, RoutedEventArgs e) {
             if (host.Content is IDisposable) {
                 (host.Content as IDisposable).Dispose();
             }
@@ -72,7 +68,7 @@ namespace Demos {
 
         }
 
-        private void Button_Click_6(object sender, RoutedEventArgs e) {
+        private void Origenes_Click(object sender, RoutedEventArgs e) {
             if (host.Content is IDisposable) {
                 (host.Content as IDisposable).Dispose();
             }
@@ -80,5 +76,26 @@ namespace Demos {
             cntr.DataContext = new OrigenViewModel();
             host.Content = cntr;
         }
+        private void Productos_Click(object sender, RoutedEventArgs e) {
+            if (host.Content is IDisposable) {
+                (host.Content as IDisposable).Dispose();
+            }
+            var cntr = new ucProductos();
+            var vm = new ProductosViewModel();
+            cntr.DataContext = vm;
+            host.Content = cntr;
+            vm.Carga();
+        }
+        private void Pedidos_Click(object sender, RoutedEventArgs e) {
+            if (host.Content is IDisposable) {
+                (host.Content as IDisposable).Dispose();
+            }
+            var cntr = new ucPedidos();
+            var vm = new PedidoViewModel();
+            cntr.DataContext = vm;
+            host.Content = cntr;
+            vm.Carga((sender as Button).CommandParameter.ToString());
+        }
+
     }
 }

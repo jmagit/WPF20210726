@@ -29,7 +29,7 @@ namespace Demos.Domains.Entidades {
             set {
                 if (idOrigen == value) return;
                 idOrigen = value;
-                RaisePropertyChanged(nameof(IdOrigen));
+                RaiseValidateAndChangedProperty(nameof(IdOrigen));
             }
         }
         public string Nombre {
@@ -37,7 +37,7 @@ namespace Demos.Domains.Entidades {
             set {
                 if (nombre == value) return;
                 nombre = value;
-                RaisePropertyChanged(nameof(Nombre));
+                RaiseValidateAndChangedProperty(nameof(Nombre));
             }
         }
         public ObservableCollection<Trabajo> Trabajos {
@@ -76,6 +76,10 @@ namespace Demos.Domains.Entidades {
         public override bool Equals(object obj) {
             return obj is Origen source &&
                    idOrigen == source.idOrigen;
+        }
+
+        public override int GetHashCode() {
+            return 263796758 + EqualityComparer<string>.Default.GetHashCode(IdOrigen);
         }
 
         protected override List<string> ValidateProperty(string propertyName) {

@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="C1.WPF.4.5.2, Version=4.5.20211.739, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL" />
+    <Reference Include="C1.WPF.DX.4.5.2, Version=4.5.20211.739, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL" />
+    <Reference Include="C1.WPF.FlexChart.4.5.2, Version=4.5.20211.739, Culture=neutral, PublicKeyToken=2aa4ec5576d6c3ce, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -64,9 +67,17 @@
       <DependentUpon>ucOtro.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\OrigenViewModel.cs" />
+    <Compile Include="ViewModel\PedidoViewModel.cs" />
+    <Compile Include="ViewModel\ProductosViewModel.cs" />
     <Compile Include="ViewModel\TrabajoViewModel.cs" />
     <Compile Include="Views\ucOrigen.xaml.cs">
       <DependentUpon>ucOrigen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ucPedidos.xaml.cs">
+      <DependentUpon>ucPedidos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ucProductos.xaml.cs">
+      <DependentUpon>ucProductos.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ucTrabajosForm.xaml.cs">
       <DependentUpon>ucTrabajosForm.xaml</DependentUpon>
@@ -105,6 +116,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\ucPedidos.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ucProductos.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\ucTrabajosForm.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -128,10 +147,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Properties\Licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Demos.gclicx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

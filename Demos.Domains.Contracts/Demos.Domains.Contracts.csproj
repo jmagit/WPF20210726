@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IOrigenRepository.cs" />
+    <Compile Include="IPedidoRepository.cs" />
+    <Compile Include="IProductoRepository.cs" />
     <Compile Include="ITrabajoRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
