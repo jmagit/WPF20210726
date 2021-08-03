@@ -106,5 +106,9 @@ namespace Demos.Domains.Entidades {
             }
             return lst;
         }
+
+        public override string ToString() {
+            return $"[Origen] {Nombre}";
+        }
     }
 }

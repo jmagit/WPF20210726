@@ -21,5 +21,9 @@ namespace Demos {
         public ucOtro() {
             InitializeComponent();
         }
+
+        private void ucTrabajosLst_Cargado(object sender, RoutedEventArgs e) {
+            
+        }
     }
 }

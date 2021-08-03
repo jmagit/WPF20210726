@@ -8,15 +8,15 @@
              xmlns:local="clr-namespace:Demos.Views"
              xmlns:vm="clr-namespace:Demos.ViewModel"
              xmlns:cnv="clr-namespace:Demos.Converters"
+             xmlns:entity="clr-namespace:Demos.Domains.Entidades;assembly=Demos.Domains.Entidades"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=vm:TrabajoViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <vm:TrabajoViewModel x:Key="MyVM" />
-        <cnv:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
-        <cnv:BooleanToInvisibilityConverter x:Key="BooleanToInvisibilityConverter" />
-        <cnv:StringToNullConverter x:Key="StringToNullConverter" />
-        <cnv:ZeroToInvisibilityConverter x:Key="ZeroToInvisibilityConverter" />
+        <DataTemplate DataType="{x:Type entity:Origen}" >
+            <TextBlock Text="{Binding Nombre}" FontStyle="Italic" Foreground="{DynamicResource Button.Pressed.Border}" />
+        </DataTemplate>
     </UserControl.Resources>
     <Grid>
         <Grid.Resources>
@@ -50,7 +50,7 @@
             <DatePicker Text="{Binding FechaCarga}" />
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="2">
-            <Button x:Name="btnCargar" Content="Cargar" Command="{Binding CargarCmd, Mode=OneWay}" />
+            <Button x:Name="btnCargar" Command="{Binding CargarCmd, Mode=OneWay}" Style="{DynamicResource BotonCargar}" />
             <Button Content="Limpiar" Command="{Binding LimpiaCmd, Mode=OneWay}" CommandParameter="{Binding Command, ElementName=btnCargar}" />
             <Button Content="Ver" Command="{Binding VerCmd, Mode=OneWay}" />
             <Button Content="Cerrar" Command="{Binding CerrarCmd, Mode=OneWay}" />

@@ -6,8 +6,17 @@
              xmlns:local="clr-namespace:Demos"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <TextBlock x:Name="txtOrigen" HorizontalAlignment="Left" Margin="80,47,0,0" TextWrapping="Wrap" Text="Config" VerticalAlignment="Top" FontSize="72"/>
+    <UserControl.Resources>
+    </UserControl.Resources>
+    <Grid Background="{DynamicResource ColorFondoControles}">
+        <TextBlock x:Name="txtOrigen" HorizontalAlignment="Left" Margin="80,47,0,0" TextWrapping="Wrap" Text="Config" VerticalAlignment="Top" FontSize="72" Style="{DynamicResource ConfigStyle}"/>
+        <Button HorizontalAlignment="Left" Margin="126,349,0,0" VerticalAlignment="Top" Style="{DynamicResource BotonCargar}"/>
+        <Button HorizontalAlignment="Left" Margin="372,262,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" FontFamily="Lucida Handwriting" Background="#FFEE5959" Style="{DynamicResource BotonAceptar}" >
+            <StackPanel Orientation="Horizontal" >
+                <Image Source="Images/accept.png" MaxWidth="20" MaxHeight="20" Margin="0,0,5,0" />
+                <TextBlock Text="Aceptar" />
+            </StackPanel>
+        </Button>
 
     </Grid>
 </UserControl>

@@ -7,12 +7,11 @@
              xmlns:Views="clr-namespace:Demos.Views" x:Class="Demos.ucOtro"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Calendar x:Name="calendario" HorizontalAlignment="Left" Margin="131,128,0,0" VerticalAlignment="Top"/>
+    <Canvas>
+        <Calendar x:Name="calendario" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="25" Canvas.Top="33"/>
 
-        <Views:ucTrabajosLst HorizontalAlignment="Left" Height="246" Margin="415,118,0,0" 
-                             VerticalAlignment="Top" Width="319" 
-                             Titulo="{Binding ElementName=calendario, Path=SelectedDate, StringFormat=\{0:d\}}"/>
+        <Views:ucTrabajosLst Height="404" Width="566" 
+            Titulo="{Binding SelectedDate, ElementName=calendario, StringFormat=\{0:d\}}" Canvas.Left="224" Canvas.Top="36" Cargado="ucTrabajosLst_Cargado"/>
 
-    </Grid>
+    </Canvas>
 </UserControl>

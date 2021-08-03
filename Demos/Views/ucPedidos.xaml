@@ -6,21 +6,10 @@
              xmlns:local="clr-namespace:Demos.Views"
              xmlns:vm="clr-namespace:Demos.ViewModel"
              xmlns:c1="http://schemas.componentone.com/winfx/2006/xaml" 
-             xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             xmlns:c1g="clr-namespace:C1.Chart;assembly=C1.WPF.FlexChart.4.5.2"
              x:Class="Demos.Views.ucPedidos"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type={x:Type vm:PedidoViewModel}}"
              d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.Resources>
-        <ObjectDataProvider x:Key="ChartTypes"
-                        ObjectType="{x:Type sys:Enum}"
-                        MethodName="GetValues">
-            <ObjectDataProvider.MethodParameters>
-                <x:Type Type="{x:Type c1g:ChartType}" />
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
-    </UserControl.Resources>
     <DockPanel>
         <StackPanel Grid.Column="1" Grid.RowSpan="2" DockPanel.Dock="Right">
             <ProgressBar Height="40" IsIndeterminate="{Binding Esperando}"/>
@@ -30,7 +19,7 @@
             <Button Content="Consulta 2 (S)" Margin="5,2" Command="{Binding Consulta2s}" CommandParameter="{Binding ElementName=flexChart, Mode=OneWay}" />
             <Button Content="Consulta 2 (P)" Margin="5,2" Command="{Binding Consulta2p}" CommandParameter="{Binding ElementName=flexChart, Mode=OneWay}" />
             <Button Content="Consulta 3 (P)" Margin="5,2" Command="{Binding Consulta3p}" CommandParameter="{Binding ElementName=flexChart, Mode=OneWay}" />
-            <ComboBox x:Name="cbChartTypes" ItemsSource="{Binding Mode=OneWay}" SelectedIndex="0" Margin="5,2" DataContext="{Binding Source={StaticResource ChartTypes}}" />
+            <ComboBox x:Name="cbChartTypes" ItemsSource="{Binding Mode=OneWay}" SelectedIndex="0" Margin="5,2" DataContext="{Binding Mode=OneWay, Source={StaticResource C1.ChartTypes}}" />
             <TextBlock Text="{Binding Mensaje}" FontFamily="Consolas" Padding="5" FontSize="16" />
         </StackPanel>
         <TabControl>

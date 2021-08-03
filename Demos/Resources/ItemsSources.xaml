@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:c1="clr-namespace:C1.Chart;assembly=C1.WPF.FlexChart.4.5.2"
+                    >
+<ObjectDataProvider x:Key="C1.ChartTypes"
+                    ObjectType="{x:Type sys:Enum}"
+                    MethodName="GetValues">
+    <ObjectDataProvider.MethodParameters>
+        <x:Type Type="{x:Type c1:ChartType}" />
+    </ObjectDataProvider.MethodParameters>
+</ObjectDataProvider>
+
+</ResourceDictionary>

@@ -35,5 +35,14 @@ namespace Demos.Views {
         }
 
         // public string Titulo { get; set; }
+
+        public static readonly RoutedEvent CargadoEvent = EventManager.RegisterRoutedEvent(
+            "Cargado", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(ucTrabajosLst));
+
+        public event RoutedEventHandler Cargado {
+            add { AddHandler(CargadoEvent, value); }
+            remove { RemoveHandler(CargadoEvent, value); }
+        }
+
     }
 }

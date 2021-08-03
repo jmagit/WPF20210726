@@ -36,7 +36,9 @@ namespace Demos {
             if (host.Content is IDisposable) {
                 (host.Content as IDisposable).Dispose();
             }
-            host.Content = new ucOtro();
+            var cntr = new ucOtro();
+            cntr.DataContext = vmTrabajo;
+            host.Content = cntr;
         }
 
         private void Limpia_Click(object sender, RoutedEventArgs e) {

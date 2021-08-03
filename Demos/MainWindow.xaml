@@ -14,8 +14,8 @@
                     <GradientStop Color="White" Offset="1"/>
                 </LinearGradientBrush>
             </StackPanel.Background>
-            <Button Content="Configura" Padding="5,1" Click="btnConfigura_Click" />
-            <Button Content="Otro" Padding="5,1" Click="Otro_Click" />
+            <Button Content="Configura" Padding="5,1" Click="btnConfigura_Click" Style="{DynamicResource ButtonFeoStyle}" />
+            <Button Content="Otro" Padding="5,1" Click="Otro_Click" Style="{DynamicResource ButtonFeoStyle}" />
             <Button Content="Limpia" Padding="5,1" Click="Limpia_Click" />
             <Button Content="Trabajos" Padding="5,1" Click="TrabajosLst_Click" />
             <Button Content="Form" Padding="5,1" Click="TrabajosForm_Click" />

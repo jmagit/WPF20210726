@@ -5,44 +5,27 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Demos.Views"
              xmlns:vm="clr-namespace:Demos.ViewModel"
-             xmlns:cnv="clr-namespace:Demos.Converters"
+             xmlns:entity="clr-namespace:Demos.Domains.Entidades;assembly=Demos.Domains.Entidades"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=vm:OrigenViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
-        <Style TargetType="{x:Type TextBox}">
-            <Setter Property="Validation.ErrorTemplate">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Grid>
-                            <Border BorderBrush="#FFCB2E2E" BorderThickness="1" Background="#11FF0000" IsHitTestVisible="False" x:Name="errorBorder"/>
-                            <AdornedElementPlaceholder x:Name="placeholder" />
-                            <Popup AllowsTransparency="True" HorizontalAlignment="Right" HorizontalOffset="0" VerticalOffset="0" PopupAnimation="Fade" Placement="Right" 
-                            PlacementTarget="{Binding ElementName=errorBorder}" IsOpen="{Binding ElementName=placeholder, Path=AdornedElement.IsFocused, Mode=OneWay}">
-                                <StackPanel Orientation="Horizontal">
-                                    <Polygon  VerticalAlignment="Center" Points="0,4 4,0 4,8" Fill="#FFCB2E2E" Stretch="Fill" Stroke="#FFCB2E2E"
-                                StrokeThickness="2" />
-                                    <Border Background="#FFCB2E2E" CornerRadius="4" Padding="4">
-                                        <ItemsControl ItemsSource="{Binding}" Margin="2,0,0,0">
-                                            <ItemsControl.ItemTemplate>
-                                                <DataTemplate>
-                                                    <TextBlock Text="{Binding ErrorContent}" Foreground="White" />
-                                                </DataTemplate>
-                                            </ItemsControl.ItemTemplate>
-                                        </ItemsControl>
-                                    </Border>
-                                </StackPanel>
-                            </Popup>
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="Validation.HasError" Value="True">
-                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
+        <DataTemplate DataType="{x:Type entity:Origen}" >
+            <StackPanel>
+                <TextBlock Text="{Binding IdOrigen}" FontStyle="Normal" Foreground="{DynamicResource Button.Pressed.Border}" FontSize="16" />
+                <TextBlock Text="{Binding Nombre}" FontStyle="Italic" Foreground="{DynamicResource Button.Pressed.Border}" />
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="diseñoCorto" DataType="{x:Type entity:Origen}" >
+            <StackPanel>
+                <TextBlock x:Name="txtNombre" Text="{Binding Nombre}" FontStyle="Oblique" Foreground="{DynamicResource Button.Pressed.Border}" />
+            </StackPanel>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding IdOrigen}" Value="NY">
+                    <Setter TargetName="txtNombre" Property="Foreground" Value="#FFEE5959" />
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
 
     </UserControl.Resources>
     <Grid>
@@ -67,6 +50,16 @@
             <TextBox Text="{Binding IdOrigen}" />
             <Label Content="Origen" />
             <TextBox Text="{Binding Nombre}" />
+            <ListBox ItemsSource="{Binding DataContext.Listado, ElementName=dgOrigenes}" ItemTemplate="{DynamicResource diseñoCorto}" >
+                <!--<ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Nombre}" FontStyle="Italic" Foreground="{DynamicResource Button.Pressed.Border}" />
+                       </StackPanel>
+
+                    </DataTemplate>                    
+                </ListBox.ItemTemplate>-->
+            </ListBox>
         </StackPanel>
         <StackPanel Grid.Row="2" Grid.Column="1" DataContext="{Binding SelectedItem, ElementName=dgTrabajos}"  >
             <Label Content="Identificador" />
@@ -77,6 +70,7 @@
             <TextBox Text="{Binding Peso}" />
             <Label Content="Fecha Carga" />
             <DatePicker Text="{Binding FechaCarga}" />
+            <ContentPresenter Content="{Binding DataContext.Elemento, ElementName=dgOrigenes}" />
         </StackPanel>
     </Grid>
 </UserControl>
